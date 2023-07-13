@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button, Form, Image } from 'react-bootstrap';
 import { uploadFile } from '../firebase/services';
 
-function FormComponent() {
+function FormComponent({ fetchImages }) {
   const [image, setImage] = useState(null);
   const [urlPreview, setURLPreview] = useState(null);
   const handleSubmit = async (e) => {
@@ -11,6 +11,7 @@ function FormComponent() {
     setImage(null);
     setURLPreview(null);
     e.target.reset();
+    fetchImages();
   };
 
   const handleChange = (e) => {
